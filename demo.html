@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Firefox Media Cross Origin</title>
+		<style>
+			iframe {
+				height: 300px;
+				width: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>iframe (without allow-same-origin)</h2>
+		<!-- replace "https://another.origin.example.com" with your second origin of choice -->
+		<iframe src="https://some.other.origin.web:1337/demo/firefox-cross-origin-usermedia/iframe-with-getUserMedia.html" sandbox="allow-scripts"></iframe>
+		<!-- replace "https://another.origin.example.com" with your second origin of choice -->
+		<h2>iframe (with allow-same-origin)</h2>
+		<iframe src="https://some.other.origin.web:1337/demo/firefox-cross-origin-usermedia/iframe-with-getUserMedia.html" sandbox="allow-scripts allow-same-origin"></iframe>
+	</body>
+</html>

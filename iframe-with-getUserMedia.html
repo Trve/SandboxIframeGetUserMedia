@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iframe with getUserMedia</title>
+</head>
+<body>
+	<button id="requestWebcam">request Webcam</button>
+	<video id="video" width="320" height="240" autoplay></video>
+	<script>
+		window.addEventListener('DOMContentLoaded', function() {
+			document.querySelector('#requestWebcam').addEventListener('click', function() {
+				// Grab elements, create settings, etc.
+				var video = document.getElementById('video');
+				var mediaConfig =  { video: true };
+
+				// Put video listeners into place
+				if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+					navigator.mediaDevices.getUserMedia(mediaConfig)
+						.then(function(stream) {
+							try {
+								video.srcObject = stream;
+							} catch (error) {
+								video.src = window.URL.createObjectURL(stream);
+							}
+							video.play();
+						})
+						.catch(function(problem) {
+							console.warn('navigator.mediaDevices.getUserMedia problem', problem);
+						});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
